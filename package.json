@@ -11,7 +11,9 @@
     "Other"
   ],
   "activationEvents": [
-    "onCommand:extension.sayHello"
+    "onLanguage:javascript",
+    "onLanguage:typescript",
+    "onDebug"
   ],
   "main": "./out/src/extension",
   "contributes": {
