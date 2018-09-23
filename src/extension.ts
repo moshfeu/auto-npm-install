@@ -25,7 +25,7 @@ export function activate(context: vscode.ExtensionContext) {
 
 const getPackageFromImport = (text: string): string => {
   try {
-    const [,,packageName] = /^import (.*) from ['|"](.*)['|"];/.exec(text) || ['', '', ''];
+    const [,,packageName] = /^import (.*) from ['|"]+([^./]{0,})+['|"];$/.  exec(text) || ['', '', ''];
     return packageName;
   } catch (error) {
     console.log(error);
