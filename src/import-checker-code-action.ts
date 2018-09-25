@@ -1,7 +1,7 @@
-import { workspace, TextDocument, Range, CodeActionContext, CancellationToken, Command, CodeActionProvider } from 'vscode';
+import { workspace, TextDocument, Range, Command, CodeActionProvider } from 'vscode';
 import { existsSync } from 'fs';
 
-export class CodeAction implements CodeActionProvider {
+export class ImportCheckerCodeAction implements CodeActionProvider {
   private getPackageIfImportAndNotInstalled(document: TextDocument, range: Range) {
     const { text } = document.lineAt(range.start.line);
     const pack = this.extractPackageFromImport(text);
@@ -24,8 +24,7 @@ export class CodeAction implements CodeActionProvider {
     }
   }
 
-  public provideCodeActions(document: TextDocument, range: Range,
-    context: CodeActionContext, token: CancellationToken): Command[] {
+  public provideCodeActions(document: TextDocument, range: Range): Command[] {
 
     const pack = this.getPackageIfImportAndNotInstalled(document, range)
 
