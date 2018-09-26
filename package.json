@@ -1,9 +1,9 @@
 {
   "name": "auto-npm-install",
   "displayName": "auto-npm-install",
-  "description": "vscode plugin to automatic install a missing npm package",
+  "description": "A plugin to automatic install a missing npm package",
   "version": "0.0.1",
-  "publisher": "MoshFeu",
+  "publisher": "moshfeu",
   "engines": {
     "vscode": "^1.6.0"
   },
@@ -50,5 +50,10 @@
   "bugs": {
     "url": "https://github.com/moshfeu/auto-npm-install/issues"
   },
-  "homepage": "https://github.com/moshfeu/auto-npm-install#readme"
+  "homepage": "https://github.com/moshfeu/auto-npm-install#readme",
+  "icon": "assets/icon.jpg",
+  "galleryBanner": {
+    "color": "#CB3837",
+    "theme": "light"
+  }
 }
