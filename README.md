@@ -12,7 +12,7 @@ Working on **npm** only
 
 ## Release Notes
 
-### 1.0.0
+### 0.0.1
 
 Initial release of **auto-npm-install**
 
