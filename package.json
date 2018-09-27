@@ -2,7 +2,7 @@
   "name": "auto-npm-install",
   "displayName": "Auto NPM install",
   "description": "A plugin to automatic install a missing npm package",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "publisher": "moshfeu",
   "engines": {
     "vscode": "^1.6.0"
@@ -28,7 +28,7 @@
     "vscode:prepublish": "tsc -p ./",
     "compile": "tsc -watch -p ./",
     "postinstall": "node ./node_modules/vscode/bin/install",
-    "publish": "vsce publish"
+    "publish": "vsce publish patch"
   },
   "devDependencies": {
     "typescript": "^2.9.2",
