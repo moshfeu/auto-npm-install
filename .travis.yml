@@ -7,11 +7,12 @@ before_install:
       sleep 3;
     fi
 
-script:
-  - npm install -g typescript
-  - npm install -g tsc
+install:
+  - npm install
   - npm run vscode:prepublish
-  - npm test
+
+script:
+  - npm test --silent
 
 after_success:
 - bash <(curl -s https://codecov.io/bash)
