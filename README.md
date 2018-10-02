@@ -1,3 +1,6 @@
+<img src="https://api.travis-ci.com/moshfeu/auto-npm-install.svg?branch=master" alt="build status" />
+<img src="https://img.shields.io/badge/dynamic/json.svg?label=downloads&url=http%3A%2F%2Fwixmail.smydesign.co.il%2Fbudget.php&query=downloads&colorB=green" />
+
 An extension to quick `npm install` directly from the editor. Usually used for pasted code which include `import` statment for an uninstalled package.
 
 ## Features
