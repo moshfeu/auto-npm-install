@@ -8,6 +8,7 @@ before_install:
     fi
 
 script:
+  - npm install -g tsc
   - npm run vscode:prepublish
   - npm test
 
