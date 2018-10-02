@@ -10,12 +10,6 @@ When the cursor is on a `import` statment from a not installed package, a quick 
 
 Working on **npm** only
 
-## Release Notes
-
-### 0.0.0
-
-Initial release of **auto-npm-install**
-
 -----------------------------------------------------------------------------------------------------------
 
 

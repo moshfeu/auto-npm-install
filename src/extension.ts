@@ -1,20 +1,21 @@
 'use strict';
-// The module 'vscode' contains the VS Code extensibility API
-// Import the module and reference it with the alias vscode in your code below
+
 import { ExtensionContext, languages, commands } from 'vscode';
 import { ImportCheckerCodeAction } from './import-checker-code-action';
-import * as cp from 'child_process';
-import { handleCommand } from './commands/npm-install';
+import { CommandHandler as NpmInstallCommandHandler } from './commands/npm-install';
 
-let p: cp.ChildProcess;
+let ch: NpmInstallCommandHandler;
 
 export function activate(context: ExtensionContext) {
   console.log('Congratulations, your extension "auto-npm-install" is now active!');
-  let importCheckerCodeAction = languages.registerCodeActionsProvider(['typescript', 'javascript'], new ImportCheckerCodeAction())
-  let disposable = commands.registerCommand('extension.npmInstall', handleCommand);
+  ch = new NpmInstallCommandHandler();
+
+  const importCheckerCodeAction = languages.registerCodeActionsProvider(['typescript', 'javascript'], new ImportCheckerCodeAction());
+  const disposable = commands.registerCommand('extension.npmInstall', ch.handle);
+
   context.subscriptions.push(importCheckerCodeAction, disposable);
 }
 
 export function deactivate() {
-  p.kill();
+  ch.dispose();
 }

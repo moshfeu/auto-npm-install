@@ -1,3 +1,5 @@
+'use strict';
+
 import { workspace, TextDocument, Range, Command, CodeActionProvider } from 'vscode';
 import { existsSync } from 'fs';
 

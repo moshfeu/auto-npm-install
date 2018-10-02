@@ -1,22 +1,22 @@
-//
-// Note: This example test is leveraging the Mocha test framework.
-// Please refer to their documentation on https://mochajs.org/ for help.
-//
+'use strict';
 
-// The module 'assert' provides assertion methods from node
-import * as assert from 'assert';
+import * as sinon from 'sinon';
+import { languages, commands } from 'vscode';
+import * as extension from '../src/extension';
+import { context } from './mock/extension-context';
+import { ImportCheckerCodeAction } from '../src/import-checker-code-action';
 
-// You can import and use all API from the 'vscode' module
-// as well as import your extension to test it
-import * as vscode from 'vscode';
-import * as myExtension from '../src/extension';
+suite('Extension Tests', () => {
 
-// Defines a Mocha test suite to group tests of similar kind together
-suite("Extension Tests", () => {
+  test('register code action', () => {
+    const spy = sinon.stub(languages, 'registerCodeActionsProvider').callsFake(() => ({}));
+    extension.activate(context);
+    sinon.assert.calledWith(spy, ['typescript', 'javascript'], new ImportCheckerCodeAction());
+  });
 
-  // Defines a Mocha unit test
-  test("Something 1", () => {
-    assert.equal(-1, [1, 2, 3].indexOf(5));
-    assert.equal(-1, [1, 2, 3].indexOf(0));
+  test('register command', () => {
+    const spy = sinon.stub(commands, 'registerCommand').callsFake(() => ({}));
+    extension.activate(context);
+    sinon.assert.calledWith(spy, 'extension.npmInstall');
   });
 });
