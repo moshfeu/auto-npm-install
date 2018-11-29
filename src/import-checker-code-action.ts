@@ -8,13 +8,17 @@ export class ImportCheckerCodeAction implements CodeActionProvider {
     const { text } = document.lineAt(range.start.line);
     const pack = this.extractPackageFromImport(text);
 
-    if (pack) {
+    if (pack && this.projectHasNodeModules()) {
       const isPackageInstalled = existsSync(`${workspace.rootPath}/node_modules/${pack}`);
 
       if (!isPackageInstalled) {
         return pack;
       }
     }
+  }
+
+  private projectHasNodeModules(): boolean {
+    return existsSync(`${workspace.rootPath}/node_modules/`);
   }
 
   private extractPackageFromImport(text: string): string {
