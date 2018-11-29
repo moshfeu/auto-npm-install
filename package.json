@@ -2,7 +2,7 @@
   "name": "auto-npm-install",
   "displayName": "Auto NPM install",
   "description": "A plugin to automatic install a missing npm package",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "publisher": "moshfeu",
   "engines": {
     "vscode": "^1.6.0"
