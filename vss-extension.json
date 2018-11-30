@@ -1,0 +1,55 @@
+{
+  "manifestVersion": 1,
+  "id": "tools",
+  "version": "0.1.0",
+  "name": "Auto NPM Install",
+  "publisher": "MosheF",
+  "description": "An extension to quick `npm install` directly from the editor. Usually used for pasted code which include `import` statment for an uninstalled package.",
+  "targets": [{
+    "id": "Microsoft.VisualStudio.Services"
+  }],
+  "icons": {
+    "default": "assets/icon.jpg"
+  },
+  "scopes": [
+    "vso.work",
+    "vso.code_write",
+    "vso.build_execute"
+  ],
+  "categories": [
+    "Npm",
+    "Quick Fixer"
+  ],
+  "branding": {
+    "color": "#000",
+    "theme": "dark"
+  },
+  "content": {
+    "details": {
+      "path": "README.md"
+    },
+    "license": {
+      "path": "LICENSE"
+    }
+  },
+  "links": {
+    "getstarted": {
+      "uri": "https://github.com/moshfeu/auto-npm-install/blob/master/README.md"
+    },
+    "support": {
+      "uri": "https://github.com/moshfeu/auto-npm-install/issues"
+    }
+  },
+  "repository": {
+    "type": "git",
+    "uri": "https://github.com/moshfeu/auto-npm-install/"
+  },
+  "screenshots": [{
+    "path": "assets/screen.gif"
+  }],
+  "badges": [{
+    "href": "https://travis-ci.com/moshfeu/auto-npm-install",
+    "uri": "https://travis-ci.com/moshfeu/auto-npm-install.svg?branch=master",
+    "description": "TravisCI build for the project"
+  }]
+}
