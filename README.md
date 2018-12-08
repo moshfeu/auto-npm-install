@@ -11,9 +11,8 @@ When the cursor is on a `import` statment from a not installed package, a quick 
 
 ## Known Issues
 
-Working on **npm** only
+Working with **npm** only
 
------------------------------------------------------------------------------------------------------------
-
+---
 
 **Enjoy!**

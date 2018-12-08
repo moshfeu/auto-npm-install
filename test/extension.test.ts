@@ -7,11 +7,16 @@ import { context } from './mock/extension-context';
 import { ImportCheckerCodeAction } from '../src/import-checker-code-action';
 
 suite('Extension Tests', () => {
-
   test('register code action', () => {
-    const spy = sinon.stub(languages, 'registerCodeActionsProvider').callsFake(() => ({} as any));
+    const spy = sinon
+      .stub(languages, 'registerCodeActionsProvider')
+      .callsFake(() => ({} as any));
     extension.activate(context);
-    sinon.assert.calledWith(spy, ['typescript', 'javascript'], new ImportCheckerCodeAction());
+    sinon.assert.calledWith(
+      spy,
+      ['typescript', 'javascript'],
+      new ImportCheckerCodeAction()
+    );
   });
 
   test('register command', () => {

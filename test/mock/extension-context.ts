@@ -14,4 +14,4 @@ export const context: ExtensionContext = {
   workspaceState: mementoMock,
   subscriptions: [],
   storagePath: ''
-}
+};
