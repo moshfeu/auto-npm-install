@@ -10,7 +10,8 @@ export function activate(context: ExtensionContext) {
   console.log('Congratulations, your extension "auto-npm-install" is now active!');
   ch = new NpmInstallCommandHandler();
 
-  const importCheckerCodeAction = languages.registerCodeActionsProvider(['typescript', 'javascript'], new ImportCheckerCodeAction());
+  const documents = ['typescript', 'javascript', 'javascriptreact', 'typescriptreact'];
+  const importCheckerCodeAction = languages.registerCodeActionsProvider(documents, new ImportCheckerCodeAction());
   const disposable = commands.registerCommand('extension.npmInstall', ch.handle);
 
   context.subscriptions.push(importCheckerCodeAction, disposable);

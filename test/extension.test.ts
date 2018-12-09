@@ -11,7 +11,7 @@ suite('Extension Tests', () => {
   test('register code action', () => {
     const spy = sinon.stub(languages, 'registerCodeActionsProvider').callsFake(() => ({} as any));
     extension.activate(context);
-    sinon.assert.calledWith(spy, ['typescript', 'javascript'], new ImportCheckerCodeAction());
+    sinon.assert.calledWith(spy, ['typescript', 'javascript', 'javascriptreact', 'typescriptreact'], new ImportCheckerCodeAction());
   });
 
   test('register command', () => {
