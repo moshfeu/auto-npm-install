@@ -1,7 +1,7 @@
 'use strict';
 
 import * as sinon from 'sinon';
-import { languages, commands } from 'vscode';
+import { languages, commands, Disposable } from 'vscode';
 import * as extension from '../src/extension';
 import { context } from './mock/extension-context';
 import { ImportCheckerCodeAction } from '../src/import-checker-code-action';
@@ -15,7 +15,7 @@ suite('Extension Tests', () => {
   });
 
   test('register command', () => {
-    const spy = sinon.stub(commands, 'registerCommand').callsFake(() => ({}));
+    const spy = sinon.stub(commands, 'registerCommand').callsFake(() => new Disposable(() => ({})));
     extension.activate(context);
     sinon.assert.calledWith(spy, 'extension.npmInstall');
   });
