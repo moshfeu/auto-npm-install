@@ -12,9 +12,10 @@ export function activate(context: ExtensionContext) {
 
   const documents = ['typescript', 'javascript', 'javascriptreact', 'typescriptreact'];
   const importCheckerCodeAction = languages.registerCodeActionsProvider(documents, new ImportCheckerCodeAction());
-  const disposable = commands.registerCommand('extension.npmInstall', ch.handle);
+  const npmInstallDisposable = commands.registerCommand('extension.npmInstall', ch.handle);
+  const npmInstallDevDisposable = commands.registerCommand('extension.npmInstallDev', ch.handle);
 
-  context.subscriptions.push(importCheckerCodeAction, disposable);
+  context.subscriptions.push(importCheckerCodeAction, npmInstallDisposable, npmInstallDevDisposable);
 }
 
 export function deactivate() {

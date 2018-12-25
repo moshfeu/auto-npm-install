@@ -1,6 +1,6 @@
 'use strict';
 
-import { workspace, TextDocument, Range, Command, CodeActionProvider } from 'vscode';
+import { workspace, TextDocument, Range, Command, CodeActionProvider, CodeActionContext } from 'vscode';
 import { existsSync } from 'fs';
 
 export class ImportCheckerCodeAction implements CodeActionProvider {
@@ -17,6 +17,17 @@ export class ImportCheckerCodeAction implements CodeActionProvider {
     }
   }
 
+  private getPackageFromDiagnostic(context: CodeActionContext): string {
+    let pack = '';
+    context.diagnostics.forEach(diagnostic => {
+      const result = /cannot find module '(.*)'/im.exec(diagnostic.message);
+      if (result && result.length > 1) {
+        pack = result[1];
+      }
+    });
+    return pack;
+  }
+
   private projectHasNodeModules(): boolean {
     return existsSync(`${workspace.rootPath}/node_modules/`);
   }
@@ -30,19 +41,27 @@ export class ImportCheckerCodeAction implements CodeActionProvider {
     }
   }
 
-  public provideCodeActions(document: TextDocument, range: Range): Command[] {
+  public provideCodeActions(document: TextDocument, range: Range, context: CodeActionContext): Command[] {
+    let pack: string;
+    const isTsFile = document.languageId === 'typescriptreact' || document.languageId === 'typescript';
+    if (isTsFile) {
+      pack = this.getPackageFromDiagnostic(context);
+    }
 
-    const pack = this.getPackageIfImportAndNotInstalled(document, range)
+    // if didn't succeed to fetch from diagnostic
+    if (!isTsFile || !pack) {
+      pack = this.getPackageIfImportAndNotInstalled(document, range);
+    }
 
     if (pack) {
-      const command = `npm install ${pack}`;
-      return [
-        {
+      return ['--save', '--save-dev'].map(flag => {
+        const command = `npm install ${pack} ${flag}`;
+        return {
           title: command,
           command: 'extension.npmInstall',
           arguments: [pack, command]
-        }
-      ]
+        };
+      });
     }
   }
 }
