@@ -11,9 +11,19 @@ When the cursor is on a `import` statment from a not installed package, a quick 
 
 ## Known Issues
 
-Working on **npm** only
+Working on **npm** only and only with `import` format (not `require`)
+
+## Change log
+
+#### 1.0.17
+Add install as `devDependencies`. (Thanks to @capaj for the idea)
+
 
 -----------------------------------------------------------------------------------------------------------
+
+## Contributors
+
+[@capaj](https://github.com/capaj)
 
 
 **Enjoy!**
